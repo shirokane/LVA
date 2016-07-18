@@ -1,0 +1,14 @@
+<% include ./header.ejs %>
+
+      <% for(var i = 0; i < list.length; i++){ %>
+        <form method="POST" action="delete">
+        <div class = "col-lg-4">
+          <h1>
+            <%= list[i].title %>
+          </h1>
+          <button type="submit">Delete</button>
+        </div>
+        </form>
+      <% } %>
+
+<% include ./footer.ejs %>

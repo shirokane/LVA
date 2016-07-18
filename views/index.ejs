@@ -1,0 +1,16 @@
+<% include ./header.ejs %>
+
+    <div class = row>
+    <% for(var i = 0; i < list.length; i++){ %>
+      <div class = "col-lg-4">
+        <h1>
+          <%= list[i].title %>
+        </h1>
+        <h2>
+          <BLOCKQUOTE><%= list[i].author %></BLOCKQUOTE>
+        </h2>
+      </div>
+    <% } %>
+    </div>
+
+  <% include ./footer.ejs %>
