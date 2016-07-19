@@ -19,6 +19,17 @@ router.get('/', function(req,res){
   });
 });
 
+router.get('/book/:id/', function(req,res){
+  Book.find({_id: req.params.id}, function(err, book){
+    res.render('book', {
+        list: book,
+        title: book[0].title,
+        author: book[0].author,
+        summary: book[0].summary
+    });
+  });
+});
+
 
 //sets list to edit
 router.get('/edit', function(req,res){
