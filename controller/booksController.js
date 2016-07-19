@@ -21,27 +21,33 @@ router.get('/', function(req,res){
 
 router.get('/book/:id/', function(req,res){
   Book.find({_id: req.params.id}, function(err, book){
+    var b = book[0];
     res.render('book', {
         list: book,
-        title: book[0].title,
-        author: book[0].author,
-        summary: book[0].summary
+        title: b.title,
+        author: b.author,
+        summary: b.summary,
+        pageCount: b.pageCount,
+        copiesAvailable: b.copiesAvailable,
+        ratings: b.ratings,
+        publisher: b.publisher,
+        coverType: b.coverType
     });
   });
 });
 
 
 //sets list to edit
-router.get('/edit', function(req,res){
-    Book.find({}, function (err,books){
-      if(err){console.log('Books not found??? ' + err);}
-      // console.log(books);
-      res.render('edit', {
-        title: page.title,
-        list: books
-      });
-    });
-});
+// router.get('/edit', function(req,res){
+//     Book.find({}, function (err,books){
+//       if(err){console.log('Books not found??? ' + err);}
+//       // console.log(books);
+//       res.render('edit', {
+//         title: page.title,
+//         list: books
+//       });
+//     });
+// });
 
 //sets ability to edit
 router.get('/book/:id/edit', function(req,res){
@@ -50,7 +56,14 @@ router.get('/book/:id/edit', function(req,res){
         list: book,
         title: book[0].title,
         author: book[0].author,
-        summary: book[0].summary
+        summary: book[0].summary,
+        pageCount: book[0].pageCount,
+        copies: book[0].copies,
+        copiesAvailable: book[0].copiesAvailable,
+        ratings: book[0].ratings,
+        publisher: book[0].publisher,
+        coverType: book[0].coverType
+
     });
   });
 });
@@ -100,7 +113,13 @@ router.post('/book/:id/edit', function(req,res){
     Book.findOneAndUpdate({ _id: req.params.id }, {
       title: req.body.title,
       author: req.body.author,
-      summary: req.body.summary
+      summary: req.body.summary,
+      pageCount: req.body.pageCount,
+      copies: req.body.copies,
+      copiesAvailable: req.body.copiesAvailable,
+      ratings: req.body.ratings,
+      publisher: req.body.publisher,
+      coverType: req.body.coverType
     }, function(err, user) {
   if (err) throw err;
 

@@ -4,4 +4,16 @@
 <h2><%= author %></h2>
 <br>
 <p><%= summary %></p>
+<br>
+    <h5>page Count</h5>
+    <p><%= pageCount %>
+    <h5>copies Available</h5>
+    <p><%= copiesAvailable %></p>
+    <h5>ratings</h5>
+    <p><%= ratings %></p>
+    <h5>publisher</h5>
+    <p><%= publisher %></p>
+    <h5>cover Type</h5>
+    <p><%= coverType %></p>
+<a href="/book/<%= list[0].id %>/edit"><button type="submit">Edit</button></a>
 <% include ./footer.ejs %>
