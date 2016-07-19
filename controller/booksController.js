@@ -22,6 +22,24 @@ router.get('/', function(req,res){
 router.get('/book/:id/', function(req,res){
   Book.find({_id: req.params.id}, function(err, book){
     var b = book[0];
+    if(b.summary == undefined){
+      b.summary = "Unconfirmed"
+    }
+    if(b.pageCount == undefined){
+      b.pageCount = 0;
+    }
+    if(b.copiesAvailable== undefined){
+      b.copiesAvailable = 0;
+    }
+    if(b.ratings == undefined){
+      b.ratings = 0;
+    }
+    if(b.publisher == undefined){
+      b.publisher = "Unconfirmed"
+    }
+    if(b.coverType == undefined){
+      b.coverType = "Unconfirmed"
+    }
     res.render('book', {
         list: book,
         title: b.title,
@@ -30,9 +48,13 @@ router.get('/book/:id/', function(req,res){
         pageCount: b.pageCount,
         copiesAvailable: b.copiesAvailable,
         ratings: b.ratings,
-        publisher: b.publisher,
-        coverType: b.coverType
+        coverType: b.coverType,
+        publisher: b.publisher
     });
+
+    console.log(b.pageCount);
+
+
   });
 });
 
