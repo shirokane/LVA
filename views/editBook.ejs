@@ -1,0 +1,15 @@
+<% include ./header.ejs %>
+<h1>Edit</h1>
+
+<form method="POST" action="edit">
+
+  <h2>Title:</h2>
+  <input type="text" name = "title" placeholder = "title" value ="<%= title %>"/><br>
+  <h2>Author:</h2>
+  <input type="text" name = "author" placeholder = "author" value ="<%= author %>"/>
+  <h2>Summary</h2>
+  <textarea class = "form-control" type="text" name = "summary" placeholder = "summary"><%= summary %></textarea>
+  <br>
+  <input type="submit">
+</form>
+<% include ./footer.ejs %>
