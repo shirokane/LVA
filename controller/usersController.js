@@ -31,6 +31,16 @@ var express = require('express'),
       });
     });
 
+    router.get('/login', function(req,res){
+      res.render('login');
+      User.find({}, function (err,users){
+        if(err){console.log(err);}
+          for(var i = 0; i < users.length; i++){
+            console.log(users[i].email + ":: " + users[i].password);
+          }
+      });
+    })
+
     router.post('/signUp', function(req,res){
       var posted = req.body;
       var newUser = new User({
@@ -43,8 +53,7 @@ var express = require('express'),
         if(err) throw err;
 
       });
-      console.log(newUser.email + "::" + newUser.password);
-        res.redirect('/');
+        res.redirect('/login');
     });
 
     module.exports = router;
