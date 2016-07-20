@@ -6,11 +6,11 @@ var express = require('express'),
    morgan = require('morgan'),
    bodyParser = require('body-parser'),
    methodOverride = require('method-override'),
+   cookie = require('cookie'),
+   passport = require('passport'),
+   expressSession = require('express-session'),
    books = require('./controller/booksController'),
-   users = require('./controller/usersController'),
-   crypto = require('crypto'),
-   algorithm = 'aes-256-ctr',
-   password = 'd6F3Efeq';
+   users = require('./controller/usersController');
 
 
    mongoose.connect(database.url, function (err,res){
@@ -30,11 +30,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({type:'application/vdn.api+json'}));
 app.use(methodOverride());
 
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', books);
 app.use('/', users);
-
-
 
 app.listen(port);
 console.log("Listening on port" + port);

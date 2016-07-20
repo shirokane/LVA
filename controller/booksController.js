@@ -85,7 +85,6 @@ router.get('/book/:id/edit', function(req,res){
         ratings: book[0].ratings,
         publisher: book[0].publisher,
         coverType: book[0].coverType
-
     });
   });
 });
