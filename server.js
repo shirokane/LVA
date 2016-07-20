@@ -30,8 +30,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({type:'application/vdn.api+json'}));
 app.use(methodOverride());
 
+
 app.use('/', books);
 app.use('/', users);
+
+
 
 app.listen(port);
 console.log("Listening on port" + port);
