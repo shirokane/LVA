@@ -5,9 +5,13 @@ var express = require('express'),
    database = require('./config/database.js'),
    morgan = require('morgan'),
    bodyParser = require('body-parser'),
-   methodOverride = require('method-override');
-   Book = require('./models/book.js');
-   books = require('./controller/booksController');
+   methodOverride = require('method-override'),
+   books = require('./controller/booksController'),
+   users = require('./controller/usersController'),
+   crypto = require('crypto'),
+   algorithm = 'aes-256-ctr',
+   password = 'd6F3Efeq';
+
 
    mongoose.connect(database.url, function (err,res){
      if (err){console.log('Error Connecting to:' + database.url + "\n" + err);}
@@ -27,18 +31,9 @@ app.use(bodyParser.json({type:'application/vdn.api+json'}));
 app.use(methodOverride());
 
 app.use('/', books);
+app.use('/', users);
 
 app.listen(port);
 console.log("Listening on port" + port);
 
 var db = mongoose.connection;
-
-// Book.find(function (err, books){
-//   if(err) return console.error(err);
-//   console.log(books);
-// });
-
-// hunger.save(function (err, hunger){
-//   if(err) return console.error(err);
-//   console.log(hunger + " check")
-// });

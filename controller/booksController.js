@@ -74,7 +74,7 @@ router.get('/book/:id/', function(req,res){
 //sets ability to edit
 router.get('/book/:id/edit', function(req,res){
   Book.find({_id: req.params.id}, function(err, book){
-    res.render('editBook', {
+    res.render('edit', {
         list: book,
         title: book[0].title,
         author: book[0].author,
