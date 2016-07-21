@@ -6,11 +6,13 @@ var express = require('express'),
    morgan = require('morgan'),
    bodyParser = require('body-parser'),
    methodOverride = require('method-override'),
+   LocalStrategy = require('passport-local').Strategy,
    cookie = require('cookie'),
    passport = require('passport'),
    expressSession = require('express-session'),
    books = require('./controller/booksController'),
    users = require('./controller/usersController');
+   genres = require('./controller/genresController');
 
 
    mongoose.connect(database.url, function (err,res){
@@ -36,8 +38,19 @@ app.use(passport.session());
 
 app.use('/', books);
 app.use('/', users);
+app.use('/', genres);
+
+var flash = require('connect-flash');
+app.use(flash());
+
+var initPassport = require('./passport/init');
+initPassport(passport);
+
+
 
 app.listen(port);
 console.log("Listening on port" + port);
 
 var db = mongoose.connection;
+
+module.exports = app;

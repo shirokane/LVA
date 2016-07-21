@@ -59,18 +59,6 @@ router.get('/book/:id/', function(req,res){
 });
 
 
-//sets list to edit
-// router.get('/edit', function(req,res){
-//     Book.find({}, function (err,books){
-//       if(err){console.log('Books not found??? ' + err);}
-//       // console.log(books);
-//       res.render('edit', {
-//         title: page.title,
-//         list: books
-//       });
-//     });
-// });
-
 //sets ability to edit
 router.get('/book/:id/edit', function(req,res){
   Book.find({_id: req.params.id}, function(err, book){

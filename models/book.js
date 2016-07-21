@@ -10,7 +10,8 @@ var bookSchema = mongoose.Schema({
   copiesAvailable: Number,
   ratings: Number,
   publisher: String,
-  coverType: String
+  coverType: String,
+  genres: [String]
 });
 
 var Book = mongoose.model('Book', bookSchema);
