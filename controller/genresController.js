@@ -29,8 +29,9 @@ router.post('/addGenre', function (req, res){
 });
 
 router.post('/removeGenre', function(req, res){
-  Genre.find({title: title}, function(err, genre){
+  Genre.find({_id: req.body.id}, function(err, genre){
     if(err) throw err;
+    genre = genre[0];
     genre.remove(function(err){
         if(err) throw err;
         console.log('Genre removed.');

@@ -5,8 +5,10 @@
       <div class = "col-md-4">
             <center>
               <h6>
+
                   <%= list[i].title %>
                   <form method="POST" action="removeGenre">
+                    <input type = "hidden" value = '<%= list[i]._id %>' name = 'id'>
                     <input type="submit"></input>
                   </form>
               </h6>
