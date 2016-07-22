@@ -3,6 +3,7 @@ var express = require('express'),
     router = express.Router(),
     database = require('../config/database.js'),
     Book = require('../models/book.js');
+    Genre = require('../models/genre.js');
 
 var page = {
   title: "Library Assistant"
